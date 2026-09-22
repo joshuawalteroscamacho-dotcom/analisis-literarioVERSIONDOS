@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --color-espresso: #120A04;
+  --color-mahogany: #2A1408;
+  --color-walnut: #3D1F0A;
+  --color-teak: #5C3518;
+  --color-amber: #D4A853;
+  --color-gold: #E8C87A;
+  --color-cream: #F5ECD7;
+  --color-parchment: #EDE0C4;
+  --color-ink: #1A0F08;
+  --color-muted-ink: #7A5C3E;
+  --color-shelf: #4A2810;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #5C3518 #120A04;
+}
+*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar-track { background: #120A04; }
+*::-webkit-scrollbar-thumb { background: #5C3518; border-radius: 3px; }
+
+body {
+  background-color: #120A04;
+  color: #F5ECD7;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Book spine 3D tilt */
+.book-spine {
+  perspective: 600px;
+  transform-style: preserve-3d;
+}
+.book-spine:hover > .spine-inner {
+  transform: rotateY(-15deg) translateX(4px);
+  box-shadow: 6px 6px 20px rgba(0,0,0,0.6);
+}
+.spine-inner {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-origin: left center;
+}
+
+/* Smooth transitions */
+.screen-enter {
+  animation: fadeSlideUp 0.25s ease forwards;
+}
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Progress bar fill */
+@keyframes fillBar {
+  from { width: 0; }
+}
+
+/* Streak flame pulse */
+@keyframes flamePulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+.flame { animation: flamePulse 1.8s ease-in-out infinite; }
